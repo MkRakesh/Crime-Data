@@ -25,6 +25,7 @@ background_image = """
 """
 
 st.markdown(background_image, unsafe_allow_html=True)
+st.write('Deployed on 27/02/2024 by Iftekar Patel @ExcelR')
 
 preprocessor = joblib.load('preprocessor.joblib')
 loaded_model = joblib.load('logModel.joblib')
