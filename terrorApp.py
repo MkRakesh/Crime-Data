@@ -27,6 +27,15 @@ background_image = """
 st.markdown(background_image, unsafe_allow_html=True)
 st.text('Deployed on 27/02/2024 by Iftekar Patel @ExcelR')
 
+st.write("Loading preprocessor...")
+preprocessor = joblib.load('preprocessor.joblib')
+st.write("Preprocessor loaded successfully.")
+
+st.write("Loading model...")
+loaded_model = joblib.load('logModel.joblib')
+st.write("Model loaded successfully.")
+
+
 preprocessor = joblib.load('preprocessor.joblib')
 loaded_model = joblib.load('logModel.joblib')
 
