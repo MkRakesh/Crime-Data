@@ -44,7 +44,7 @@ perpetrator_options = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'G
                        'Group O', 'Group P', 'Group Q', 'Group R', 'Group S', 'Group T', 'Group U', 
                        'Group V', 'Group W', 'Group X', 'Group Y', 'Group Z']
 
-weapon_used_options= ["Explosives","Bladed Weapons" "Firearms", "Chemicals","Meele"]
+weapon_used_options= ["Explosives","Bladed Weapons" ,"Firearms", "Chemicals","Meele"]
 
 claimed_by_options = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F', 'Group G',
                       'Group H', 'Group I', 'Group J', 'Group K', 'Group L', 'Group M', 'Group N',
