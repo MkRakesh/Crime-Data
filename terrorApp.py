@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[6]:
-
-
 import streamlit as st
 import joblib
 import pandas as pd
-from sklearn .preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
-
 
 background_image = """
 <style>
@@ -30,29 +26,19 @@ st.text('Deployed on 27/02/2024 by Iftekar Patel @ExcelR')
 preprocessor = joblib.load('preprocessor.joblib')
 loaded_model = joblib.load('logModel.joblib')
 
-
-
-
-
 st.title('Terror Attack Prediction')
 
-attack_type_options = ["Bombing","Kidnapping", "Shooting", "Hijacking", "Arson", "Assasination"]
-
-
+attack_type_options = ["Bombing", "Kidnapping", "Shooting", "Hijacking", "Arson", "Assassination"]
 perpetrator_options = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F', 'Group G',
                        'Group H', 'Group I', 'Group J', 'Group K', 'Group L', 'Group M', 'Group N', 
                        'Group O', 'Group P', 'Group Q', 'Group R', 'Group S', 'Group T', 'Group U', 
                        'Group V', 'Group W', 'Group X', 'Group Y', 'Group Z']
 
-weapon_used_options= ["Explosives","Bladed Weapons" ,"Firearms", "Chemicals","Meele"]
-
+weapon_used_options = ["Explosives", "Bladed Weapons", "Firearms", "Chemicals", "Melee"]
 claimed_by_options = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E', 'Group F', 'Group G',
                       'Group H', 'Group I', 'Group J', 'Group K', 'Group L', 'Group M', 'Group N',
                       'Group O', 'Group P', 'Group Q', 'Group R', 'Group S', 'Group T', 'Group U', 
                       'Group V', 'Group W', 'Group X', 'Group Y', 'Group Z']
-
-
-
 
 # Create dropdowns for each feature
 input1 = st.selectbox("Attack_Type:", attack_type_options)
@@ -64,37 +50,17 @@ input5 = st.selectbox("Claimed_by:", claimed_by_options)
 input6 = st.number_input("Victims_Injured:", min_value=0)
 input7 = st.number_input("Victims_Deceased:", min_value=0)
 
-
-
-
-
 # Check if Victims_Injured and Victims_Deceased are provided
 if input6 > 0 or input7 > 0:
-    toPredict = pd.DataFrame({'Attack_Type':[input1], 'Perpetrator':[input3],'Weapon_Used':[input4],'Claimed_By':[input5], 'Victims_Injured':[input6],'Victims_Deceased':[input7]})
-    # Create a TensorFlow constant with the input data
-
+    toPredict = pd.DataFrame({'Attack_Type': [input1], 'Perpetrator': [input3], 'Weapon_Used': [input4], 'Claimed_By': [input5], 'Victims_Injured': [input6], 'Victims_Deceased': [input7]})
+    
     # Add a Button for Prediction:
     if st.button("Predict"):
-        # Perform predictions using your model or algorithm
-        logmodel = Pipeline(steps=[
-    ('preprocessor', preprocessor),
-    ('classifier', LogisticRegression( ))
-    ])
-
+        # Perform predictions using your loaded_model
         prediction = loaded_model.predict(toPredict)
 
         # Determine the prediction result
-        if prediction :
-            pred = 'Major Attack'
-        else:
-            pred = 'Minor Attack'
+        pred = 'Major Attack' if prediction else 'Minor Attack'
 
         # Display the prediction result
         st.write("Prediction:", pred)
-
-
-# In[ ]:
-
-
-
-
